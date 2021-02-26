@@ -21,7 +21,8 @@ DHT dht(DHTPIN, DHTTYPE);
 void setup() {
   Serial.begin(9600);
   // wait for serial to be ready
-  while(!Serial);
+  // (this will cause the device to not start if the serial monitor is not connected...)
+  // while(!Serial);
 
    // begin initialization
   if (!BLE.begin()) {
