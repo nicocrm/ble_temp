@@ -7,6 +7,7 @@ import threading
 import time
 import sys
 
+HOST = "127.0.0.1"
 PORT = 8500
 DEVICE_NAME = "TempBureau"
 
@@ -37,7 +38,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
 threading.Thread(target=read_temperature_loop).start()
 
 try:
-    with http.server.HTTPServer(("", PORT), Handler) as httpd:
+    with http.server.HTTPServer((HOST, PORT), Handler) as httpd:
         print("serving at port", PORT)
         httpd.serve_forever()
 except Exception as x:
