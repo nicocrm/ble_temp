@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3 -u
 
 
 import http.server
@@ -20,7 +20,10 @@ def read_temperature_loop():
 
     r = temp_reader.TempReader(DEVICE_NAME)
     while True:
-        temp_value = r.read_temperature()
+        try:
+            temp_value = r.read_temperature()
+        except Exception as x:
+            print("Error reading temperature", x)
         print("Read temp:", temp_value)
         if not keep_looping:
             break

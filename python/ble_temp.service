@@ -1,0 +1,14 @@
+[Unit]
+Description=BLE Temperature Receiver
+
+[Service]
+ExecStart=/usr/bin/python3 -u temp_service.py
+WorkingDirectory=/home/nico/Projects/iot-fun-projects/ble_temp/python
+
+ProtectSystem=strict
+ProtectHome=read-only
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

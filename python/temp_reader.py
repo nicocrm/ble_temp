@@ -31,8 +31,9 @@ class TempReader:
             return temp[0]
         except BTLEException as x:
             print("BL Error: ", x)
-            self.p.disconnect()
-            self.p = None
+            if self.p:
+                self.p.disconnect()
+                self.p = None
             return None
 
 
